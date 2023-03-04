@@ -8,12 +8,16 @@ class SideMenuItemTile extends StatefulWidget {
   const SideMenuItemTile({
     Key? key,
     required this.isOpen,
+    required this.endAnim,
     required this.minWidth,
+    required this.currentWidth,
     required this.data,
   }) : super(key: key);
   final SideMenuItemDataTile data;
   final bool isOpen;
+  final bool endAnim;
   final double minWidth;
+  final double currentWidth;
 
   @override
   State<SideMenuItemTile> createState() => _SideMenuItemTileState();
@@ -177,7 +181,9 @@ class _SideMenuItemTileState extends State<SideMenuItemTile> {
     final TextStyle? titleStyle =
         widget.data.titleStyle ?? Theme.of(context).textTheme.bodyLarge;
     final hasSuffixIcon = widget.data.suffixIcon != null;
-    if (hasSuffixIcon) {
+    if (hasSuffixIcon &&
+        widget.currentWidth > widget.minWidth * 2 &&
+        widget.endAnim) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

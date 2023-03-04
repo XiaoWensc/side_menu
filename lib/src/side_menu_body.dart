@@ -10,10 +10,14 @@ class SideMenuBody extends StatelessWidget {
     Key? key,
     required this.minWidth,
     required this.isOpen,
+    required this.endAnim,
+    required this.currentWidth,
     required this.data,
   }) : super(key: key);
   final double minWidth;
   final bool isOpen;
+  final bool endAnim;
+  final double currentWidth;
   final SideMenuData data;
 
   @override
@@ -32,6 +36,8 @@ class SideMenuBody extends StatelessWidget {
                 return SideMenuItemTile(
                   minWidth: minWidth,
                   isOpen: isOpen,
+                  endAnim: endAnim,
+                  currentWidth: currentWidth,
                   data: item,
                 );
               } else if (item is SideMenuItemDataTitle) {

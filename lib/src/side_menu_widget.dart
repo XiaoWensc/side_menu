@@ -66,6 +66,7 @@ class SideMenuWidget extends StatefulWidget {
 class _SideMenuWidgetState extends State<SideMenuWidget>
     with SideMenuWidthMixin {
   double _currentWidth = Constants.zeroWidth;
+  bool _endAnim = true;
 
   @override
   void initState() {
@@ -80,6 +81,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
   /// 展开
   void _openMenu() {
     setState(() {
+      _endAnim = false;
       _currentWidth = widget.maxWidth;
     });
   }
@@ -87,6 +89,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
   /// 收起
   void _closeMenu() {
     setState(() {
+      _endAnim = false;
       _currentWidth = widget.minWidth;
     });
   }
@@ -94,6 +97,7 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
   /// 展开&收起
   void _toggleMenu() {
     setState(() {
+      _endAnim = false;
       _currentWidth =
           _currentWidth == widget.minWidth ? widget.maxWidth : widget.minWidth;
     });
@@ -165,8 +169,11 @@ class _SideMenuWidgetState extends State<SideMenuWidget>
       child: SideMenuBody(
         isOpen: _currentWidth != widget.minWidth,
         minWidth: widget.minWidth,
+        endAnim: _endAnim,
+        currentWidth: _currentWidth,
         data: _builder(),
       ),
+      onEnd: () => setState(() => _endAnim = true),
     );
   }
 
