@@ -1,7 +1,14 @@
 library side_menu;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'package:badges/badges.dart';
+
+export './src/data/resizer_data.dart';
+export './src/data/resizer_toggle_data.dart';
+export './src/data/side_menu_data.dart';
+export './src/data/side_menu_item_data.dart';
+export './src/item/export.dart';
+export './src/side_menu_controller.dart';
+export './src/side_menu_mode.dart';
+export './src/side_menu_position.dart';
+export './src/side_menu_priority.dart';
+export './src/side_menu_widget.dart';
